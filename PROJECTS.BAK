@@ -1,0 +1,499 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<stdlib.h>
+#define rw 80
+#define cl 50
+FILE*fp,*fp1,*f1,*f2;
+int s,z;
+char fn1[]="opd12.patient";
+char fn2[]="oopd12.patient";
+struct Defence{
+		char product[20],Seller[20],ch;
+		int Price,totalamount,roomno,quantity,sn;
+                char disease[30],department[20],date[15];
+		char recommendation[50],category[30];
+		char test[15][20];
+		float testfee[15];
+                float totalfee;
+		float balance;
+		float remain;
+		}p,q;
+char string[20];
+typedef struct Defence Budget;
+void newrecord(int l);
+void print();
+void displaytest();
+void mainscreen();
+void newrecord1();
+void edit1();
+void editrecord();
+void switch1();
+void main()
+{
+	int a,i,n,y;
+	char c,d;
+	char date1[15],date2[15],string1[20];
+	unsigned int tsz;
+
+	clrscr();
+	mainscreen();
+	label1:
+	textcolor(3);
+	gotoxy(23,15);
+	cprintf("Enter today's Date(yyyy/mm/dd)");
+	fflush(stdin);gotoxy(28,19);
+	scanf("%[^\n]",date2);
+	if((date2[4]!='/')||(date2[7]!='/')||(date2[5]>'3')||(date2[8]>'3'))
+	{
+		clrscr();
+		mainscreen();
+		gotoxy(23,13);textcolor(4+128);
+		cprintf("Wrong Entry");
+		goto label1;
+	}
+	clrscr();
+	mainscreen();
+	label2:
+
+	textcolor(15);
+	lowvideo();gotoxy(22,9);textcolor(14);
+	cprintf("Enter the corresponding no");gotoxy(22,11);textcolor(10);
+	cprintf("1.Maintenance");gotoxy(22,13);
+	cprintf("2.Electricity");gotoxy(22,15);
+	cprintf("3.IT Infrastucture");gotoxy(22,17);
+	cprintf("4.Lab infrastructures");gotoxy(22,19);
+	cprintf("5.Hostel");gotoxy(22,21);
+	cprintf("6.Internet");gotoxy(22,23);
+	cprintf("7.Exit the Recent Tab");gotoxy(50,23);
+	fflush(stdin);
+	scanf("%c",&d);
+switch(d)
+	{
+		case '1':
+		      {
+
+			{
+				if((fp=fopen(fn1,"rb"))==NULL)
+				s=1;
+				else
+				{
+				while(fread(&p,sizeof(Budget),1,fp))
+				s=1+p.sn;
+				}
+				fclose(fp);
+			}
+                        clrscr();
+			mainscreen();
+			label:
+			gotoxy(22,9);textcolor(7);
+			cprintf("Enter Your Choice No.");
+			gotoxy(22,11);
+                        cprintf("1.Building Maintenance");
+                        gotoxy(22,13);
+                        cprintf("2.Mess maintenance");
+  			gotoxy(22,15);
+			cprintf("3.Gardening/Horticultureiv");
+			gotoxy(22,17);
+			cprintf("4.Housekeeping");
+			gotoxy(22,19);
+			cprintf("5.Appliances");
+			fflush(stdin);
+			scanf("%c",&c);
+                     switch(c)
+                                 {
+                                              case '1': clrscr();
+						        mainscreen();
+					      	        textcolor(11);
+ 						        gotoxy(23,11);
+							cprintf("ADDING Buding Maintanace Record");textcolor(15);
+							newrecord(s);
+      							if((fp=fopen(fn1,"ab+"))==NULL)
+							{
+								printf("Cannot open the file f1");
+								getch();
+								exit(1);
+							}
+                                      			break;
+                                             case '2':  clrscr();
+						        mainscreen();
+							textcolor(11);
+							gotoxy(23,11);
+							cprintf("ADDING Mess Maintanace Record");textcolor(15);
+							newrecord(s);
+							if((fp=fopen(fn1,"ab+"))==NULL)
+							{
+								printf("Cannot open the file f1");
+								getch();
+								exit(1);
+							}
+							break;
+					    case '3': clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING Gardening/Horticultureiv");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn1,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f1");
+							      getch();
+							      exit(1);
+						      }
+							break;
+					    case '4': clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING Housekeeping");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn1,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f1");
+							      getch();
+							      exit(1);
+						      }
+							break;
+					  case '5':   clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING Appliances");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn1,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f1");
+							      getch();
+							      exit(1);
+						      }
+							break;
+					  default: clrscr();
+						   mainscreen();
+						   cprintf("wrong choice!");
+
+	clrscr();
+	mainscreen();
+	goto label;
+
+
+      }
+
+    case '2': {
+
+			{
+				if((fp=fopen(fn1,"rb"))==NULL)
+				s=1;
+				else
+				{
+				while(fread(&p,sizeof(Budget),1,fp))
+				s=1+p.sn;
+				}
+				fclose(fp);
+			}
+                        clrscr();
+			mainscreen();
+			label3:
+			gotoxy(22,9);textcolor(7);
+			cprintf("Enter Your Choice No.");
+			gotoxy(22,11);
+                        cprintf("1.IT Labs");
+                        gotoxy(22,13);
+                        cprintf("2.Non IT Labs");
+  			gotoxy(22,15);
+			cprintf("3.Classroom ");
+			gotoxy(22,17);
+			cprintf("4.Gadget offices ");
+			gotoxy(22,19);
+			cprintf("5.Faculty cabins");
+                        gotoxy(22,21);
+                        cprintf("6. Library  ");
+			gotoxy(22,23);
+			cprintf("7.Premises");
+			gotoxy(55,19);
+			fflush(stdin);
+                        scanf("%c",&d);
+                        switch(d)
+                                 {
+                                              case '1': clrscr();
+						        mainscreen();
+					      	        textcolor(11);
+ 						        gotoxy(23,11);
+							cprintf("ADDING It labs Record");textcolor(15);
+							newrecord(s);
+      							if((fp=fopen(fn2,"ab+"))==NULL)
+							{
+								printf("Cannot open the file f2");
+								getch();
+								exit(1);
+							}
+                                      			break;
+                                             case '2':  clrscr();
+						        mainscreen();
+							textcolor(11);
+							gotoxy(23,11);
+							cprintf("ADDING Non it labs Record");textcolor(15);
+							newrecord(s);
+							if((fp=fopen(fn2,"ab+"))==NULL)
+							{
+								printf("Cannot open the file f2");
+								getch();
+								exit(1);
+							}
+							break;
+					    case '3': clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING CLASSROOM ");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn2,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f2");
+							      getch();
+							      exit(1);
+						      }
+							break;
+					    case '4': clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING Gadget offices");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn2,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f2");
+							      getch();
+							      exit(1);
+						      }
+							break;
+					  case '5':   clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING Faculty cabins");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn2,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f2");
+							      getch();
+							      exit(1);
+						      }
+							break;
+                                          case '6':   clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING Liibrary");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn2,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f2");
+							      getch();
+							      exit(1);
+						      }
+							break;
+                                          case '7':   clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING premises");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn2,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f2");
+							      getch();
+							      exit(1);
+						      }
+							break;
+					  default: clrscr();
+						   mainscreen();
+						   cprintf("wrong choice!");
+
+                                   }
+                           clrscr();
+                           mainscreen();
+                           label4:
+                       }
+                 case '3': clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING IT infrastuctures");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn1,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f1");
+							      getch();
+							      exit(1);
+						      }
+							
+                                                     {
+ 							clrscr()';
+							mainscreen();
+							got label2;
+							}
+                                                      
+							break;
+                                                        
+               case '4':   clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING IT Infrastucture");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn2,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f2");
+							      getch();
+							      exit(1);
+						      }
+                                                     {
+ 							clrscr()';
+							mainscreen();
+							got label2;
+							}
+							break;
+                                                     
+
+              case '5':   clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING Hostel");textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn2,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f2");
+							      getch();
+							      exit(1);
+						      }
+                                                      
+                                                     {
+ 							clrscr()';
+							mainscreen();
+							got label2;
+							}
+							break;
+                                                      
+             case '6':   clrscr();
+						      mainscreen();
+						      textcolor(11);
+						      gotoxy(23,11);
+						      cprintf("ADDING Internet);textcolor(15);
+						      newrecord(s);
+						      if((fp=fopen(fn2,"ab+"))==NULL)
+						      {
+							      printf("Cannot open the file f2");
+							      getch();
+							      exit(1);
+						      }
+							
+                                                     {
+ 							clrscr()';
+							mainscreen();
+							got label2;
+							}
+							break;
+          case'7':    {
+			clrscr();
+			mainscreen();
+			textcolor(14); gotoxy(30,24);
+			cprintf("THANK U");gotoxy(30,26);
+		       //	cprintf("SAVING UR SETTINGS"); gotoxy(30,28);
+			cprintf("BYE...........");
+			getch();
+			exit(1);
+			break;
+			}
+        default:
+		       {
+			clrscr();
+			mainscreen();
+			textcolor(12+128);gotoxy(22,11);
+			cprintf("Wrong choice");gotoxy(22,13);textcolor(15);
+			 cprintf("Retype choice");
+			goto label1;
+			}
+
+	}
+	clrscr();
+	mainscreen();
+	goto label1;
+}
+}             
+}
+}
+void newrecord(int l)
+{
+	char q;
+	p.sn=l;
+	gotoxy(5,14);textcolor(10);
+	cprintf("Record of Products no:");
+	printf(" %d",l);
+	gotoxy(5,17);
+	cprintf("Product:");
+
+	gotoxy(5,20);
+	cprintf(" Seller:");
+
+	gotoxy(5,23);
+	cprintf("Price: ");
+
+	/*gotoxy(5,26);
+	cprintf("Sex(HW/SW): ");*/
+
+	gotoxy(35,23);
+	cprintf("product Descrp:");
+	fflush(stdin);gotoxy(35,17);
+	scanf("%[^\n]",p.product);
+	p.product[0]=toupper(p.product[0]);
+	gotoxy(35,20);
+	fflush(stdin);
+	scanf("%[^\n]",p.Seller);
+	gotoxy(15,23);
+	fflush(stdin);
+	scanf("%d",&p.Price);
+	gotoxy(50,23);
+        fflush(stdin);
+	scanf("%d",&p.disease);
+        
+}
+
+
+void mainscreen()
+{
+	int i,j;
+	clrscr();
+	for(i=2,j=2;i<rw;j++)
+	{
+		if(j>15)
+		j=2;
+		textcolor(j);
+		gotoxy(i,2);
+		cprintf("%c",15);
+		gotoxy(i,cl-1);
+		cprintf("%c",15);
+		i++;
+
+	}
+	for(i=2,j=2;i<cl;i++,j++)
+	{
+		if(j>15)
+		j=2;
+		textcolor(j);
+		gotoxy(2,i);
+		cprintf("%c",15);
+		gotoxy(rw-1,i);
+		cprintf("%c",15);
+
+	}
+	gotoxy(30,4);textcolor(3);
+	cprintf("I am working ");
+	gotoxy(27,6);textcolor(6);
+	cprintf("Bhul gai kya ");
+	gotoxy(27,7); textcolor(15);
+	cprintf("--------------------");
+}
+
+
+	
