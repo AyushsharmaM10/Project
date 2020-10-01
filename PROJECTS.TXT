@@ -35,6 +35,15 @@ void main()
 	char c,d;
 	char date1[15],date2[15],string1[20];
 	unsigned int tsz;
+	printf("\n\n\n");
+    printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
+    printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+    printf("\n\t\t\t        =                 WELCOME                   =");
+    printf("\n\t\t\t        =                   TO                      =");
+    printf("\n\t\t\t        =           GALGOTIAS UNIVERSITY            =");
+    printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+    printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
+    printf("\n\t\t\t\t Expenditure budget of Galgotias university");
 
 	clrscr();
 	mainscreen();
@@ -112,7 +121,7 @@ switch(d)
 							{
 								printf("Cannot open the file f1");
 								getch();
-								exit(1);
+								exit(1); // terminates the complete program execution
 							}
                                       			break;
                                              case '2':  clrscr();
@@ -125,7 +134,7 @@ switch(d)
 							{
 								printf("Cannot open the file f1");
 								getch();
-								exit(1);
+								exit(1);  // terminates the complete program execution
 							}
 							break;
 					    case '3': clrscr();
@@ -138,7 +147,7 @@ switch(d)
 						      {
 							      printf("Cannot open the file f1");
 							      getch();
-							      exit(1);
+							      exit(1);  // terminates the complete program execution
 						      }
 							break;
 					    case '4': clrscr();
@@ -151,7 +160,7 @@ switch(d)
 						      {
 							      printf("Cannot open the file f1");
 							      getch();
-							      exit(1);
+							      exit(1);  // terminates the complete program execution
 						      }
 							break;
 					  case '5':   clrscr();
@@ -164,7 +173,7 @@ switch(d)
 						      {
 							      printf("Cannot open the file f1");
 							      getch();
-							      exit(1);
+							      exit(1);  // terminates the complete program execution
 						      }
 							break;
 					  default: clrscr();
@@ -326,13 +335,13 @@ switch(d)
 							      getch();
 							      exit(1);
 						      }
-							
+
                                                      {
 							clrscr();
 							mainscreen();
 							goto label2;
 							}
-                                                      
+
 
 
 	       case '4':   clrscr();
@@ -367,14 +376,14 @@ switch(d)
 							      getch();
 							      exit(1);
 						      }
-                                                      
+
                                                      {
 							clrscr();
 							mainscreen();
 							goto label2;
 							}
 
-                                                      
+
              case '6':   clrscr();
 						      mainscreen();
 						      textcolor(11);
@@ -387,7 +396,7 @@ switch(d)
 							      getch();
 							      exit(1);
 						      }
-							
+
                                                      {
 							clrscr();
 							mainscreen();
@@ -452,7 +461,7 @@ void newrecord(int l)
 	gotoxy(50,23);
         fflush(stdin);
 	scanf("%d",&p.disease);
-        
+
 }
 
 
@@ -489,7 +498,5 @@ void mainscreen()
 	cprintf("TT Project Maintenance");
 	gotoxy(27,7); textcolor(15);
 	cprintf("--------------------");
+
 }
-
-
-	
